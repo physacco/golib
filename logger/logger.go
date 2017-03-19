@@ -42,35 +42,37 @@ func SetOutputFile(name string) (err error) {
 }
 
 func Fatal(format string, v ...interface{}) {
-    log.Fatalf(format, v...)
+    if verbosity >= FATAL {
+        log.Fatalf("FATAL " + format, v...)
+    }
 }
 
 func Error(format string, v ...interface{}) {
     if verbosity >= ERROR {
-        log.Printf(format, v...)
+        log.Printf("ERROR " + format, v...)
     }
 }
 
 func Warning(format string, v ...interface{}) {
     if verbosity >= WARNING {
-        log.Printf(format, v...)
+        log.Printf("WARN  " + format, v...)
     }
 }
 
 func Info(format string, v ...interface{}) {
     if verbosity >= INFO {
-        log.Printf(format, v...)
+        log.Printf("INFO  " + format, v...)
     }
 }
 
 func Debug(format string, v ...interface{}) {
     if verbosity >= DEBUG {
-        log.Printf(format, v...)
+        log.Printf("DEBUG " + format, v...)
     }
 }
 
 func Verbose(format string, v ...interface{}) {
     if verbosity >= VERBOSE {
-        log.Printf(format, v...)
+        log.Printf("VERBO " + format, v...)
     }
 }
